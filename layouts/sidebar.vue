@@ -1,0 +1,14 @@
+<template>
+    <div>
+        <h1>
+            Dashboard
+        </h1>
+        <h3>
+            Profile
+        </h3>
+        <h4>
+            Settings
+        </h4>
+        <slot></slot>
+    </div>
+</template>
