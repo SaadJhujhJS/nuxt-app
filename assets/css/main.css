@@ -1,0 +1,28 @@
+.phones {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  align-items: stretch;
+  padding: 20px;
+}
+
+.phones .card {
+  background-color: white;
+  padding: 16px;
+  margin-bottom: 20px;
+  flex: 1 1 200px; /* Grow, shrink, min width */
+  max-width: 300px; /* Limits max size for large screens */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+@media (max-width: 600px) {
+ .phones .card {
+    flex: 1 1 100%;
+  }
+}
