@@ -18,7 +18,8 @@
 </template>
 <script setup>
 const route = useRoute();
-
+import { toast } from 'vue3-toastify'
+import 'vue3-toastify/dist/index.css'
 const cart = UseCartState();
 const fullname = computed(() => {
   return `phone-${route.params.name}`;
@@ -32,9 +33,11 @@ function addToCart() {
     cart.value.push({
       name: fullname,
     });
+    toast.success("Added to Cart")
   }
   else{
     cart.value = cart.value.filter((ct)=> ct.name !== fullname.value)
+    toast.error("Removed from cart")
   }
 }
 </script>
