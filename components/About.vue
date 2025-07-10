@@ -20,6 +20,9 @@
   </div>
 </template>
 <script setup>
+import { toast } from 'vue3-toastify'
+import 'vue3-toastify/dist/index.css'
+
 useHead({
   title: "About Us",
   meta: [
@@ -36,15 +39,13 @@ const isLoggedIn = ref(false)
 const handleSubmit = async () => {
   if (isLoading.value) return;
   isLoading.value = true;
-   // ✅ Simulate a delay (e.g., 2 seconds)
+   // Simulate a delay (e.g., 2 seconds)
   await new Promise(resolve => setTimeout(resolve, 2000));
-  const { data, error } = await useFetch(
-    "https://jsonplaceholder.typicode.com/users"
-  );
+  const { data, error } = await useFetch("https://jsonplaceholder.typicode.com/users");
 
   isLoading.value = false;
   if (error.value) {
-    console.error("Fetch failed:", error.value);
+    console.log(`API Error: ${error.value?.message || error.value}`)
     return;
   }
 
@@ -61,11 +62,12 @@ const handleSubmit = async () => {
 
   if (matchedUser) {
     isLoggedIn.value = true
-    alert('Login successful')
+    toast.success("Login Successfuly")
     name.value = ""
     email.value = ""
+    navigateTo('/')
   } else {
-    alert('User not found. Please check name and email.')
+    toast.error("Incorrect Email or password")
   }
 };
 </script>
