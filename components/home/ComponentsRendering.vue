@@ -34,4 +34,15 @@ function view(name) {
 function goToSimple() {
   navigateTo("simple");
 }
+
+const { data, error } = await useFetch('/api/students')
+
+watchEffect(() => {
+  if (data.value) {
+    console.log("Student data:", data.value);
+  }
+  if (error.value) {
+    console.error("API Error:", error.value);
+  }
+})
 </script>
